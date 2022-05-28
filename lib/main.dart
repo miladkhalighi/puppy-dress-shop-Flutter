@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:puppy_shop/screens/home/home_screen.dart';
 import 'package:puppy_shop/screens/intro/intro_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const IntroScreen(),
+      home: const HomeScreen(),
     );
   }
 }
