@@ -51,13 +51,16 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                    children: [
-                      TextSpan(text: "Love Is a",style: GoogleFonts.asapCondensed(color: SolidColors.white,fontSize: 60)),
-                      TextSpan(text: "\nFour-legged".toUpperCase(),style: GoogleFonts.asapCondensed(color: SolidColors.white,fontSize: 38,letterSpacing: 5)),
-                      TextSpan(text: "\nword",style: GoogleFonts.francoisOne(color: SolidColors.white,fontSize: 38)),
-                    ]),
+              DelayedDisplay(
+                delay: const Duration(milliseconds: 600),
+                child: RichText(
+                  text: TextSpan(
+                      children: [
+                        TextSpan(text: "Love Is a",style: GoogleFonts.asapCondensed(color: SolidColors.white,fontSize: 60)),
+                        TextSpan(text: "\nFour-legged".toUpperCase(),style: GoogleFonts.asapCondensed(color: SolidColors.white,fontSize: 38,letterSpacing: 5)),
+                        const TextSpan(text: "\nWord",style: TextStyle(fontFamily: 'Frasell',fontSize: 40,color: SolidColors.white)),
+                      ]),
+                ),
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
