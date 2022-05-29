@@ -98,7 +98,7 @@ packages:
     source: hosted
     version: "2.0.1"
   flutter_svg:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
@@ -110,7 +110,7 @@ packages:
     source: sdk
     version: "0.0.0"
   google_fonts:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: google_fonts
       url: "https://pub.dartlang.org"
@@ -159,7 +159,7 @@ packages:
     source: hosted
     version: "1.7.0"
   page_transition:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: page_transition
       url: "https://pub.dartlang.org"
