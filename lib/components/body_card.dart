@@ -9,16 +9,16 @@ class BodyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var upperCardHeight =  height * 0.75;
+    var upperCardHeight =  height * 0.69;
     var size =  MediaQuery.of(context).size;
+    double lowerCardWidth =  size.width * 0.16;
     double borderRad =  37;
-    return Container(
-      color: Colors.red, //todo : for test
+    return SizedBox(
       height: height,
       child: Stack(
         children: [
           Positioned(
-            top: 20,
+            top: 25,
             left: 0,
             right: 0,
             child: Container(
@@ -49,6 +49,7 @@ class BodyCard extends StatelessWidget {
                      right: size.width * 0.06,
                       child: likeButton()
                   ),
+                  //texts
                   Positioned(
                     left: 0,
                     bottom: 0,
@@ -68,10 +69,9 @@ class BodyCard extends StatelessWidget {
                             ),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                width: size.width * 0.7,
+                                width: size.width * 0.6,
                                 child: Row(
                                   children: [
                                     Text('\$ 3.26',style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.bold),),
@@ -84,6 +84,7 @@ class BodyCard extends StatelessWidget {
                                     const Spacer(),
                                 ],),
                               ),
+                              const Spacer(),
                               Container(
                                 width: 42,
                                 height: 42,
@@ -92,10 +93,11 @@ class BodyCard extends StatelessWidget {
                                   color: const Color(0xFFFF8057),
                                   borderRadius: BorderRadius.circular(11),
                                 ),
-                                child: SvgPicture.asset('assets/icons/star.svg',
+                                child: SvgPicture.asset('assets/icons/archive-tick.svg',
                                   color: SolidColors.white,
                                 ),
                               ),
+                              const SizedBox(width: 8,),
                               Container(
                                 width: 42,
                                 height: 42,
@@ -104,28 +106,48 @@ class BodyCard extends StatelessWidget {
                                   color: const Color(0xFFFF8057),
                                   borderRadius: BorderRadius.circular(11),
                                 ),
-                                child: SvgPicture.asset('assets/icons/star.svg',
+                                child: SvgPicture.asset('assets/icons/bag.svg',
                                   color: SolidColors.white,
                                 ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 16,)
                         ],
                       ),
                     )
-                  )
+                  ),
+
                 ],
               ),
             ),
           ),
           //img dog1
           Positioned(
-              top: -20,
-              left: size.width/3,
-              right: size.width/3,
-              //bottom: upperCardHeight,
-              child: const Image(image: AssetImage('assets/images/dog1.png'),
-                fit: BoxFit.cover,)),
+              top: -18,
+              left: size.width/4,
+              right: size.width/4,
+              bottom: height * 0.53,
+              child: Image(image: AssetImage('assets/images/dog1.png'),fit: BoxFit.fill,)
+          ),
+          Positioned(
+              bottom: 4,
+              left: 0,
+              right: 0,
+              child:
+              SizedBox(
+                height: height /2.77,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d1.png',),
+                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d2.png',),
+                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d3.png',),
+                  ],
+                ),
+              )
+          )
 
 
         ],),
@@ -153,5 +175,37 @@ class BodyCard extends StatelessWidget {
                             height: 24,
                           )),
                     );
+  }
+}
+
+class BottomPuppyCard extends StatelessWidget {
+  final String img;
+  const BottomPuppyCard({
+    Key? key,
+    required this.lowerCardWidth, required this.img,
+  }) : super(key: key);
+
+  final double lowerCardWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(5, 4, 6, 4),
+      width: lowerCardWidth,
+      decoration: BoxDecoration(
+        color: SolidColors.white,
+        borderRadius: BorderRadius.circular(23),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 8,
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(23),
+        child: Image(image: AssetImage(img),fit: BoxFit.cover,),
+      )
+    );
   }
 }

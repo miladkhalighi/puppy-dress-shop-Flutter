@@ -3,6 +3,7 @@ import 'package:puppy_shop/colors.dart';
 import 'package:puppy_shop/components/dress_item.dart';
 import '../../components/action_button.dart';
 import '../../components/body_card.dart';
+import '../../components/puppy_product_item.dart';
 import '../../models/dress_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 32,),
             SizedBox(
-              height: size.height * 0.08,
+              height: size.height * 0.07,
               child: ListView.builder(itemBuilder: (context,index)=>
                   Padding(
                     padding: EdgeInsets.fromLTRB(index==0 ? bodyMagin : 16, 0, index==dressList.length ? bodyMagin : 0, 0),
@@ -77,13 +78,28 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 8,),
-            BodyCard(height: size.height/2),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: bodyMagin),
+              child: BodyCard(height: size.height/1.9),
+            ),
+            const SizedBox(height: 16,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: bodyMagin),
+              child: Text('Explore some more products',style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.black),),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: bodyMagin),
+              child: PuppyProductCard(size: size),
+            )
+
           ],
         ),
       ),
     );
   }
 }
+
+
 
 
 
