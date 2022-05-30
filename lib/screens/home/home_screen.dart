@@ -22,10 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int _dressItemIndexSelected = 0;
   int _badgeValue = 0;
   bool _liked = false;
+  bool fadeInAnimate = true;
 
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     developer.log("BUILD METHOD CALL");
@@ -71,9 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: EdgeInsets.fromLTRB(index==0 ? bodyMargin : 16, 0, index==dressList.length-1 ? bodyMargin : 0, 0),
                               child: DressItem(
                                 selected: _dressItemIndexSelected == index ? true : false,
-                                onPressed: (){
-                                  setState((){
+                                onPressed: () async{
+                                  setState(() {
                                     _dressItemIndexSelected = index;
+                                    fadeInAnimate = false;
+                                  });
+                                  await Future.delayed(const Duration(milliseconds:400));
+                                  setState(() {
+                                    fadeInAnimate = true;
                                   });
                                 },
                                 name: dressList[index].name,),
@@ -87,7 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 8,),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: bodyMargin),
-                        child: BodyCard(height: size.height/2.1,liked: _liked, btnLikedPressed: () {
+                        child: BodyCard(
+                          height: size.height/2.1,
+                          liked: _liked,
+                          fadein: fadeInAnimate,
+                          btnLikedPressed: () {
                           setState((){_liked = !_liked;}); },
                         ),
                       ),
@@ -99,26 +107,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 16,),
                       SizedBox(
                         height: size.height / 7,
-                        child: DelayedDisplay(
-                          child: ListView.builder(itemBuilder: (context,index) =>
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    index==0 ? bodyMargin : 16,
-                                    0,
-                                    index==productList.length-1 ? bodyMargin : 0,
-                                    0,
-                                ),
-                                child: PuppyProductCard(
-                                    img: productList[index].img,
-                                    title: productList[index].title,
-                                    price: productList[index].price,
-                                    height: size.height / 7,
-                                ),
+                        child: ListView.builder(itemBuilder: (context,index) =>
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  index==0 ? bodyMargin : 16,
+                                  0,
+                                  index==productList.length-1 ? bodyMargin : 0,
+                                  0,
                               ),
-                            itemCount: productList.length,
-                            physics: const BouncingScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                          ),
+                              child: PuppyProductCard(
+                                  img: productList[index].img,
+                                  title: productList[index].title,
+                                  price: productList[index].price,
+                                  height: size.height / 7,
+                              ),
+                            ),
+                          itemCount: productList.length,
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
                         ),
                       ),
                       const SizedBox(height: 16,),

@@ -8,7 +8,8 @@ class BodyCard extends StatelessWidget {
   final double height;
   final bool liked;
   final Function() btnLikedPressed;
-  const BodyCard({required this.height,this.liked = false,required this.btnLikedPressed,Key? key}) : super(key: key);
+  final bool fadein;
+  const BodyCard({required this.height,this.liked = false,required this.btnLikedPressed,this.fadein = true,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,104 +25,109 @@ class BodyCard extends StatelessWidget {
             top: 25,
             left: 0,
             right: 0,
-            child: Container(
-              height: upperCardHeight,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(borderRad)
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top : 0,
-                    left : 0,
-                    right : 0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: upperCardHeight/2,
-                        decoration: BoxDecoration(
-                          color : SolidColors.green,
-                          borderRadius: BorderRadius.circular(borderRad)
+            child: DelayedDisplay(
+              fadeIn: fadein,
+              //delay: const Duration(milliseconds: 300),
+              slidingBeginOffset: const Offset(0, -10),
+              child: Container(
+                height: upperCardHeight,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(borderRad)
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top : 0,
+                      left : 0,
+                      right : 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: upperCardHeight/2,
+                          decoration: BoxDecoration(
+                            color : SolidColors.green,
+                            borderRadius: BorderRadius.circular(borderRad)
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 20,
-                     right: size.width * 0.06,
-                      child: likeButton(context)
-                  ),
-                  //texts
-                  Positioned(
-                    left: 0,
-                    bottom: 0,
-                    right: 0,
-                    top: upperCardHeight/2 ,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: size.width * 0.6,
-                            child: Text('Bwealthest Small Dog Sleeveless Sweater.',
-                              style: GoogleFonts.poppins(fontSize: 14,color: Colors.black,fontWeight: FontWeight.w600),
-                              maxLines: 2,
+                    Positioned(
+                      top: 20,
+                       right: size.width * 0.06,
+                        child: likeButton(context)
+                    ),
+                    //texts
+                    Positioned(
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      top: upperCardHeight/2 ,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: size.width * 0.6,
+                              child: Text('Bwealthest Small Dog Sleeveless Sweater.',
+                                style: GoogleFonts.poppins(fontSize: 14,color: Colors.black,fontWeight: FontWeight.w600),
+                                maxLines: 2,
+                              ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: size.width * 0.6,
-                                child: Row(
-                                  children: [
-                                    Text('\$ 3.26',style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.bold),),
-                                    const Spacer(),
-                                    SvgPicture.asset('assets/icons/star.svg',color: SolidColors.green,),
-                                    const SizedBox(width: 8,),
-                                    Text('4.2',style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.bold),),
-                                    const SizedBox(width: 8,),
-                                    Text('Sold',style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w600),),
-                                    const Spacer(),
-                                ],),
-                              ),
-                              const Spacer(),
-                              Container(
-                                width: 40,
-                                height: 40,
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFFF8057),
-                                  borderRadius: BorderRadius.circular(11),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: size.width * 0.6,
+                                  child: Row(
+                                    children: [
+                                      Text('\$ 3.26',style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.bold),),
+                                      const Spacer(),
+                                      SvgPicture.asset('assets/icons/star.svg',color: SolidColors.green,),
+                                      const SizedBox(width: 8,),
+                                      Text('4.2',style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.bold),),
+                                      const SizedBox(width: 8,),
+                                      Text('Sold',style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w600),),
+                                      const Spacer(),
+                                  ],),
                                 ),
-                                child: SvgPicture.asset('assets/icons/archive-tick.svg',
-                                  color: SolidColors.white,
+                                const Spacer(),
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFFF8057),
+                                    borderRadius: BorderRadius.circular(11),
+                                  ),
+                                  child: SvgPicture.asset('assets/icons/archive-tick.svg',
+                                    color: SolidColors.white,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 8,),
-                              Container(
-                                width: 40,
-                                height: 40,
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFFF8057),
-                                  borderRadius: BorderRadius.circular(11),
+                                const SizedBox(width: 8,),
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFFF8057),
+                                    borderRadius: BorderRadius.circular(11),
+                                  ),
+                                  child: SvgPicture.asset('assets/icons/bag.svg',
+                                    color: SolidColors.white,
+                                  ),
                                 ),
-                                child: SvgPicture.asset('assets/icons/bag.svg',
-                                  color: SolidColors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 16,)
-                        ],
-                      ),
-                    )
-                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 16,)
+                          ],
+                        ),
+                      )
+                    ),
 
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -131,7 +137,11 @@ class BodyCard extends StatelessWidget {
               left: size.width/4,
               right: size.width/4,
               bottom: height * 0.53,
-              child: Image(image: AssetImage('assets/images/dog1.png'),fit: BoxFit.fill,)
+              child: DelayedDisplay(
+                  fadeIn: fadein,
+                  //delay: const Duration(milliseconds: 300),
+                  slidingBeginOffset: const Offset(0, -10),
+                  child: const Image(image: AssetImage('assets/images/dog1.png'),fit: BoxFit.fill,))
           ),
           Positioned(
               bottom: 4,
@@ -145,15 +155,21 @@ class BodyCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DelayedDisplay(
-                        delay: const Duration(milliseconds: 500),
+                        fadeIn: fadein,
+                        delay: fadein ? const Duration(milliseconds: 100): const Duration(milliseconds: 10),
+                        slidingBeginOffset: const Offset(0, 10),
                         child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d1.png',)
                     ),
                     DelayedDisplay(
-                        delay: const Duration(milliseconds: 700),
+                        fadeIn: fadein,
+                        delay: fadein ? const Duration(milliseconds: 200): const Duration(milliseconds: 10),
+                        slidingBeginOffset: const Offset(0, 10),
                         child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d2.png',)
                     ),
                     DelayedDisplay(
-                        delay: const Duration(milliseconds: 900),
+                        fadeIn: fadein,
+                        delay: fadein ? const Duration(milliseconds: 300): const Duration(milliseconds: 10),
+                        slidingBeginOffset: const Offset(0, 10),
                         child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d3.png',)
                     ),
                   ],
