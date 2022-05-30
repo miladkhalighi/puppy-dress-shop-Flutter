@@ -6,6 +6,7 @@ import '../../components/action_button.dart';
 import '../../components/body_card.dart';
 import '../../components/puppy_product_item.dart';
 import '../../models/dress_model.dart';
+import '../../models/product_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as developer;
 
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 16,bottom: 8),
+                padding: const EdgeInsets.only(top: 8,bottom: 8),
                 child: buildAppBar(bodyMagin),
               ),
               Expanded(
@@ -88,9 +89,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text('Explore some more products',style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.black),),
                       ),
                       const SizedBox(height: 16,),
-                      Padding(
-                        padding: EdgeInsets.only(left: bodyMagin),
-                        child: PuppyProductCard(size: size, title: 'gfdgdg', price: 2.17, img: 'fdg',),
+                      SizedBox(
+                        height: size.height / 7,
+                        child: ListView.builder(itemBuilder: (context,index) =>
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  index==0 ? bodyMagin : 16,
+                                  0,
+                                  index==productList.length-1 ? bodyMagin : 0,
+                                  0,
+                              ),
+                              child: PuppyProductCard(
+                                  img: productList[index].img,
+                                  title: productList[index].title,
+                                  price: productList[index].price,
+                                  height: size.height / 7,
+                              ),
+                            ),
+                          itemCount: productList.length,
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                        ),
                       ),
                       const SizedBox(height: 16,),
                     ],

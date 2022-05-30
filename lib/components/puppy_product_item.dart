@@ -6,36 +6,32 @@ import '../colors.dart';
 class PuppyProductCard extends StatelessWidget {
   const PuppyProductCard({
     Key? key,
-    required this.size, required this.img, required this.title, required this.price,
+    required this.img, required this.title, required this.price,required this.height
   }) : super(key: key);
 
-  final Size size;
   final String img;
   final String title;
   final double price;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.fromLTRB(4, 4, 4, 6),
-      height: size.height / 8,
-      width: size.width/1.7,
+      padding: const EdgeInsets.fromLTRB(6, 6, 6, 6),
+      //height: size.height / 8,
+      width: size.width/1.8,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21),
           color: SolidColors.white
       ),
       child: Row(
         children: [
-          Expanded(
-            flex :2,
-            child: AspectRatio(aspectRatio: 1,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(21),
-                  child: Image(image: AssetImage(img),fit: BoxFit.cover,)),),
-          ),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(21),
+              child: Image(image: AssetImage(img),fit: BoxFit.cover,width: height-6,height: height-6,)),
           const SizedBox(width: 16,),
           Expanded(
-              flex :3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
