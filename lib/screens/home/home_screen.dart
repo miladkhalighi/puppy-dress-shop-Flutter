@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    developer.log("BUILD METHOD CALL");
     var size = MediaQuery.of(context).size;
     var bodyMargin = size.width * 0.05;
 
@@ -86,10 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 8,),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: bodyMargin),
-                        child: DelayedDisplay(
-                          child: BodyCard(height: size.height/2.1,liked: _liked, btnLikedPressed: () {
-                            setState((){_liked = !_liked;}); },
-                          ),
+                        child: BodyCard(height: size.height/2.1,liked: _liked, btnLikedPressed: () {
+                          setState((){_liked = !_liked;}); },
                         ),
                       ),
                       const SizedBox(height: 16,),
@@ -100,15 +99,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 16,),
                       SizedBox(
                         height: size.height / 7,
-                        child: ListView.builder(itemBuilder: (context,index) =>
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  index==0 ? bodyMargin : 16,
-                                  0,
-                                  index==productList.length-1 ? bodyMargin : 0,
-                                  0,
-                              ),
-                              child: DelayedDisplay(
+                        child: DelayedDisplay(
+                          child: ListView.builder(itemBuilder: (context,index) =>
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(
+                                    index==0 ? bodyMargin : 16,
+                                    0,
+                                    index==productList.length-1 ? bodyMargin : 0,
+                                    0,
+                                ),
                                 child: PuppyProductCard(
                                     img: productList[index].img,
                                     title: productList[index].title,
@@ -116,10 +115,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: size.height / 7,
                                 ),
                               ),
-                            ),
-                          itemCount: productList.length,
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
+                            itemCount: productList.length,
+                            physics: const BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 16,),

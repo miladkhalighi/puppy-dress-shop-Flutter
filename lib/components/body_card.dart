@@ -187,7 +187,7 @@ class BodyCard extends StatelessWidget {
 
                           duration: const Duration(milliseconds: 1000),
                           child: SvgPicture.asset('assets/icons/heart.svg',
-                            color: liked ? Colors.red :SolidColors.white,
+                            color: liked ? SolidColors.red :SolidColors.white,
                             width: 12,
                             height: 12,
                           ),
