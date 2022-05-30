@@ -16,7 +16,7 @@ class ActionButton extends StatelessWidget {
       onTap: onTap,
       splashColor: SolidColors.green,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(12),
         width: 48,
         height: 48,
         decoration: BoxDecoration(
