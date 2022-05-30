@@ -11,7 +11,7 @@ class BodyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var upperCardHeight =  height * 0.69;
     var size =  MediaQuery.of(context).size;
-    double lowerCardWidth =  size.width * 0.16;
+    double lowerCardWidth =  size.width * 0.17;
     double borderRad =  37;
     return SizedBox(
       height: height,
@@ -62,7 +62,7 @@ class BodyCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: size.width * 0.7,
+                            width: size.width * 0.6,
                             child: Text('Bwealthest Small Dog Sleeveless Sweater.',
                               style: GoogleFonts.poppins(fontSize: 14,color: Colors.black,fontWeight: FontWeight.w600),
                               maxLines: 2,
@@ -86,8 +86,8 @@ class BodyCard extends StatelessWidget {
                               ),
                               const Spacer(),
                               Container(
-                                width: 42,
-                                height: 42,
+                                width: 40,
+                                height: 40,
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFFF8057),
@@ -99,8 +99,8 @@ class BodyCard extends StatelessWidget {
                               ),
                               const SizedBox(width: 8,),
                               Container(
-                                width: 42,
-                                height: 42,
+                                width: 40,
+                                height: 40,
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFFF8057),

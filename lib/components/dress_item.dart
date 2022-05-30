@@ -22,7 +22,7 @@ class DressItem extends StatelessWidget {
       ),
       child: Center(
         child: Text(name,
-          style: GoogleFonts.poppins(fontSize: 14,color: selected ? Colors.white : Colors.black),
+          style: GoogleFonts.poppins(fontSize: 14,color: selected ? Colors.white : Colors.black,fontWeight: FontWeight.w500),
         ),
       ),
     );

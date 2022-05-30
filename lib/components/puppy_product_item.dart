@@ -6,16 +6,19 @@ import '../colors.dart';
 class PuppyProductCard extends StatelessWidget {
   const PuppyProductCard({
     Key? key,
-    required this.size,
+    required this.size, required this.img, required this.title, required this.price,
   }) : super(key: key);
 
   final Size size;
+  final String img;
+  final String title;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(4, 4, 4, 6),
-      height: 70,
+      height: size.height / 8,
       width: size.width/1.7,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21),
@@ -28,7 +31,7 @@ class PuppyProductCard extends StatelessWidget {
             child: AspectRatio(aspectRatio: 1,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(21),
-                  child: const Image(image: AssetImage('assets/images/d1.png'),fit: BoxFit.cover,)),),
+                  child: Image(image: AssetImage(img),fit: BoxFit.cover,)),),
           ),
           const SizedBox(width: 16,),
           Expanded(
@@ -37,10 +40,10 @@ class PuppyProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Sage Reversible \nSided Coat',
+                  Text(title,
                     style: GoogleFonts.poppins(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600),),
                   const SizedBox(height: 6,),
-                  Text('\$ 2.17',
+                  Text('\$ $price',
                     style: GoogleFonts.montserrat(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),),
                 ],
               )
