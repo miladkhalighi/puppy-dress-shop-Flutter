@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:puppy_shop/colors.dart';
 import 'package:puppy_shop/components/dress_item.dart';
@@ -19,6 +20,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int _dressItemIndexSelected = 0;
+  int _badgeValue = 0;
+  bool _liked = false;
 
 
 
@@ -83,7 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 8,),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: bodyMargin),
-                        child: BodyCard(height: size.height/2.1),
+                        child: DelayedDisplay(
+                          child: BodyCard(height: size.height/2.1,liked: _liked, btnLikedPressed: () {
+                            setState((){_liked = !_liked;}); },
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16,),
                       Padding(
@@ -101,11 +108,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   index==productList.length-1 ? bodyMargin : 0,
                                   0,
                               ),
-                              child: PuppyProductCard(
-                                  img: productList[index].img,
-                                  title: productList[index].title,
-                                  price: productList[index].price,
-                                  height: size.height / 7,
+                              child: DelayedDisplay(
+                                child: PuppyProductCard(
+                                    img: productList[index].img,
+                                    title: productList[index].title,
+                                    price: productList[index].price,
+                                    height: size.height / 7,
+                                ),
                               ),
                             ),
                           itemCount: productList.length,
@@ -138,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Spacer(),
                     ActionButton(img: 'assets/icons/search.svg',color: Colors.black,onTap: (){},),
                     SizedBox(width: bodyMargin,),
-                    ActionButton(img: 'assets/icons/bag.svg',color: Colors.black,onTap: (){},),
+                    ActionButton(img: 'assets/icons/bag.svg',color: Colors.black,onTap: (){},hasBadge: true,badgeValue: _badgeValue,),
                     SizedBox(width: bodyMargin,),
                   ],
                 ),

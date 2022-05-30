@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +6,9 @@ import 'package:puppy_shop/colors.dart';
 
 class BodyCard extends StatelessWidget {
   final double height;
-  const BodyCard({required this.height,Key? key}) : super(key: key);
+  final bool liked;
+  final Function() btnLikedPressed;
+  const BodyCard({required this.height,this.liked = false,required this.btnLikedPressed,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class BodyCard extends StatelessWidget {
                   Positioned(
                     top: 20,
                      right: size.width * 0.06,
-                      child: likeButton()
+                      child: likeButton(context)
                   ),
                   //texts
                   Positioned(
@@ -141,9 +144,18 @@ class BodyCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d1.png',),
-                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d2.png',),
-                    BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d3.png',),
+                    DelayedDisplay(
+                        delay: const Duration(milliseconds: 500),
+                        child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d1.png',)
+                    ),
+                    DelayedDisplay(
+                        delay: const Duration(milliseconds: 700),
+                        child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d2.png',)
+                    ),
+                    DelayedDisplay(
+                        delay: const Duration(milliseconds: 900),
+                        child: BottomPuppyCard(lowerCardWidth: lowerCardWidth, img: 'assets/images/d3.png',)
+                    ),
                   ],
                 ),
               )
@@ -154,27 +166,34 @@ class BodyCard extends StatelessWidget {
     );
   }
 
-  Widget likeButton() {
-    return Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                            colors: [
-                          SolidColors.white.withOpacity(0.67),
-                          SolidColors.white.withOpacity(0.07),
-                        ])
+  Widget likeButton(BuildContext context) {
+    return InkWell(
+      onTap: btnLikedPressed,
+      child: Container(
+                        width: 32,
+                        height: 32,
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                              colors: [
+                            SolidColors.white.withOpacity(0.67),
+                            SolidColors.white.withOpacity(0.07),
+                          ])
+                        ),
+                        child: AnimatedContainer(
+
+                          duration: const Duration(milliseconds: 1000),
+                          child: SvgPicture.asset('assets/icons/heart.svg',
+                            color: liked ? Colors.red :SolidColors.white,
+                            width: 12,
+                            height: 12,
+                          ),
+                        )
                       ),
-                      child: IconButton(onPressed: (){},
-                          icon: SvgPicture.asset('assets/icons/heart.svg',
-                            color: SolidColors.white,
-                            width: 24,
-                            height: 24,
-                          )),
-                    );
+    );
   }
 }
 
