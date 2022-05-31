@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFFEDEDED),
+        backgroundColor: SolidColors.scaffoldBgColor,
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

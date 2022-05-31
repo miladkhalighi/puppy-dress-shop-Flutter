@@ -5,6 +5,7 @@ import 'package:puppy_shop/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:puppy_shop/screens/home/home_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:puppy_shop/screens/root/rootScreen.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../colors.dart';
@@ -133,7 +134,7 @@ class IntroScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(8,12,8,8),
                           child: GestureDetector(
                             onTap: (){
-                                Navigator.of(context).push(PageTransition(child: const HomeScreen(),
+                                Navigator.of(context).push(PageTransition(child: const RootScreen(),
                                   type: PageTransitionType.bottomToTop,
                                   alignment: Alignment.bottomCenter,
                                   duration: const Duration(milliseconds: 1000),
