@@ -24,10 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _liked = false;
   bool fadeInAnimate = true;
 
-  
+
   @override
   Widget build(BuildContext context) {
-    developer.log("BUILD METHOD CALL");
+    //developer.log("BUILD METHOD CALL");
     var size = MediaQuery.of(context).size;
     var bodyMargin = size.width * 0.05;
 
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     _dressItemIndexSelected = index;
                                     fadeInAnimate = false;
                                   });
-                                  await Future.delayed(const Duration(milliseconds:400));
+                                  await Future.delayed(const Duration(milliseconds:300));
                                   setState(() {
                                     fadeInAnimate = true;
                                   });
@@ -97,6 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           fadein: fadeInAnimate,
                           btnLikedPressed: () {
                           setState((){_liked = !_liked;}); },
+                          btnBagPressed: (){
+                            setState((){
+                              _badgeValue++;
+                            });
+                          },
                         ),
                       ),
                       const SizedBox(height: 16,),

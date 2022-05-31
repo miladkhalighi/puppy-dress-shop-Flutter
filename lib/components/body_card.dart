@@ -3,13 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puppy_shop/colors.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
 
 class BodyCard extends StatelessWidget {
   final double height;
   final bool liked;
   final Function() btnLikedPressed;
   final bool fadein;
-  const BodyCard({required this.height,this.liked = false,required this.btnLikedPressed,this.fadein = true,Key? key}) : super(key: key);
+  final Function() btnBagPressed;
+
+  const BodyCard({
+    required this.height,
+    this.liked = false,
+    required this.btnLikedPressed,
+    required this.btnBagPressed,
+    this.fadein = true,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,29 +102,37 @@ class BodyCard extends StatelessWidget {
                                   ],),
                                 ),
                                 const Spacer(),
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFFF8057),
-                                    borderRadius: BorderRadius.circular(11),
-                                  ),
-                                  child: SvgPicture.asset('assets/icons/archive-tick.svg',
-                                    color: SolidColors.white,
+                                Bounce(
+                                  duration: const Duration(milliseconds: 200),
+                                  onPressed: (){},
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFF8057),
+                                      borderRadius: BorderRadius.circular(11),
+                                    ),
+                                    child: SvgPicture.asset('assets/icons/archive-tick.svg',
+                                      color: SolidColors.white,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 8,),
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFFF8057),
-                                    borderRadius: BorderRadius.circular(11),
-                                  ),
-                                  child: SvgPicture.asset('assets/icons/bag.svg',
-                                    color: SolidColors.white,
+                                Bounce(
+                                  duration: const Duration(milliseconds: 200),
+                                  onPressed: btnBagPressed,
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFF8057),
+                                      borderRadius: BorderRadius.circular(11),
+                                    ),
+                                    child: SvgPicture.asset('assets/icons/bag.svg',
+                                      color: SolidColors.white,
+                                    ),
                                   ),
                                 ),
                               ],
