@@ -73,7 +73,7 @@ class BodyCard extends StatelessWidget {
                       right: 0,
                       top: upperCardHeight/2 ,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
