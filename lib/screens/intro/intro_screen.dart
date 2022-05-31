@@ -34,7 +34,8 @@ class IntroScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DelayedDisplay(
-                  delay: const Duration(milliseconds: 2000),
+                  slidingBeginOffset: const Offset(0, -1),
+                  delay: const Duration(milliseconds: 200),
                     child: Text('PUPPY',style: GoogleFonts.bebasNeue(color: SolidColors.white,fontSize: 40),)
                 ),
                 Padding(
@@ -42,7 +43,8 @@ class IntroScreen extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: DelayedDisplay(
-                      delay: const Duration(milliseconds: 1000),
+                      slidingBeginOffset: const Offset(0, -1),
+                      delay: const Duration(milliseconds: 300),
                       child: Text("unless there is a necessity for it, don't do it to your dog",
                         style: GoogleFonts.poppins(color: SolidColors.white,fontSize: 12,),
                         softWrap: true,
@@ -53,7 +55,8 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
                 DelayedDisplay(
-                  delay: const Duration(milliseconds: 600),
+                  slidingBeginOffset: const Offset(-1, 0),
+                  delay: const Duration(milliseconds: 1500),
                   child: RichText(
                     text: TextSpan(
                         children: [
@@ -96,16 +99,20 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(height: 80,child:
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Start Shopping Now',style: GoogleFonts.poppins(color: SolidColors.white,fontSize: 14),),
-                      startButtom(size, context)
+                DelayedDisplay(
+                  slidingBeginOffset: const Offset(0, 1),
+                  delay: const Duration(milliseconds: 2000),
+                  child: SizedBox(height: 80,child:
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Start Shopping Now',style: GoogleFonts.poppins(color: SolidColors.white,fontSize: 14),),
+                        startButtom(size, context)
 
-                    ],),
-                )  ,),
+                      ],),
+                  )  ,),
+                ),
               ],
             ),
           ),

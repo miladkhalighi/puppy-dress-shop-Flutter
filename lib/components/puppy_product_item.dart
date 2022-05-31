@@ -38,10 +38,10 @@ class PuppyProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                    style: GoogleFonts.poppins(fontSize: 10,color: Colors.black,fontWeight: FontWeight.w600),),
+                    style: GoogleFonts.poppins(fontSize: 11,color: Colors.black,fontWeight: FontWeight.w600),),
                   const SizedBox(height: 6,),
                   Text('\$ $price',
-                    style: GoogleFonts.montserrat(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.black),),
+                    style: GoogleFonts.montserrat(fontSize: 13,fontWeight: FontWeight.bold,color: Colors.black),),
                 ],
               )
           ),
