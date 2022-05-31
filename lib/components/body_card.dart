@@ -200,8 +200,9 @@ class BodyCard extends StatelessWidget {
   }
 
   Widget likeButton(BuildContext context) {
-    return InkWell(
-      onTap: btnLikedPressed,
+    return Bounce(
+      duration: const Duration(milliseconds: 200),
+      onPressed: btnLikedPressed,
       child: Container(
                         width: 32,
                         height: 32,
@@ -216,14 +217,10 @@ class BodyCard extends StatelessWidget {
                             SolidColors.white.withOpacity(0.07),
                           ])
                         ),
-                        child: AnimatedContainer(
-
-                          duration: const Duration(milliseconds: 1000),
-                          child: SvgPicture.asset('assets/icons/heart.svg',
-                            color: liked ? SolidColors.red :SolidColors.white,
-                            width: 12,
-                            height: 12,
-                          ),
+                        child: SvgPicture.asset('assets/icons/heart.svg',
+                          color: liked ? SolidColors.red :SolidColors.white,
+                          width: 12,
+                          height: 12,
                         )
                       ),
     );
