@@ -40,33 +40,36 @@ class _RootScreenState extends State<RootScreen> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset('assets/icons/home.svg',color: SolidColors.white,),
+        icon: Icon(Icons.home_filled),
         title: ("Home"),
         activeColorPrimary: SolidColors.red,
         activeColorSecondary: SolidColors.white,
-        inactiveColorPrimary: SolidColors.green,
+        inactiveColorPrimary: Colors.black45,
         textStyle: const TextStyle(fontSize: 14),
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset('assets/icons/EmailSend.svg',color: SolidColors.white,),
+        icon: const Icon(Icons.send),
         title: ("Share"),
         activeColorPrimary: SolidColors.red,
         activeColorSecondary: SolidColors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.black45,
+        textStyle: const TextStyle(fontSize: 14),
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset('assets/icons/Vector.svg',color: SolidColors.white,),
+        icon: const Icon(Icons.account_balance_wallet_sharp),
         title: ("Cart"),
         activeColorPrimary: SolidColors.red,
         activeColorSecondary: SolidColors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.black45,
+        textStyle: const TextStyle(fontSize: 14),
       ),
       PersistentBottomNavBarItem(
-        icon: SvgPicture.asset('assets/icons/Person.svg',color: SolidColors.white,),
+        icon: const Icon(Icons.person),
         title: ("Profile"),
         activeColorPrimary: SolidColors.red,
         activeColorSecondary: SolidColors.white,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.black45,
+        textStyle: const TextStyle(fontSize: 14),
       ),
 
     ];
