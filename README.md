@@ -1,4 +1,4 @@
-# puppy_shop
+# puppy_dress_shop
 
 This is a flutter "Puppy dress shop" app
 it is convenient for beginners who wants to be familiar with :
