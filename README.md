@@ -9,7 +9,7 @@ it is convenient for beginners who wants to be familiar with :
 
 ## ScreenShots
 
-![screenshot](assets/images/puppy-shop-cover.png?raw=true "puppy-shop-cover")
+![screenshot](assets/images/puppy-shop-cover.jpg?raw=true "puppy-shop-cover")
 ## Getting Started
 
 This project is a starting point for a Flutter application.
