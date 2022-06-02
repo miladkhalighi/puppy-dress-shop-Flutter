@@ -1,7 +1,15 @@
 # puppy_shop
 
-A new Flutter project.
+This is a flutter "Puppy dress shop" app
+it is convenient for beginners who wants to be familiar with :
+- basic widgets
+- responsive UI
+- clean code
+- state management
 
+## ScreenShots
+
+![screenshot](assets/images/puppy-shop-cover.png?raw=true "puppy-shop-cover")
 ## Getting Started
 
 This project is a starting point for a Flutter application.
